@@ -10,7 +10,7 @@ class BanMembers extends Base
     /**
      * 封禁用户
      *
-     * @CQCommand("ban")
+     * @CQCommand("ban", alias={"封禁"})
      *
      * @return string
      */
@@ -25,7 +25,7 @@ class BanMembers extends Base
     /**
      * 解封用户
      *
-     * @CQCommand("unban")
+     * @CQCommand("unban", alias={"解封", "解禁", "解除封禁"})
      *
      * @return string
      */

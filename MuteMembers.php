@@ -24,7 +24,7 @@ class MuteMembers extends Base
     /**
      * 解除禁言
      *
-     * @CQCommand("unmute")
+     * @CQCommand("unmute", alias={"解除禁言", "取消禁言"})
      *
      * @return string
      */
@@ -38,7 +38,7 @@ class MuteMembers extends Base
     /**
      * 开启全体禁言
      *
-     * @CQCommand("muteall")
+     * @CQCommand("muteall", alias={"全体禁言"})
      *
      * @return string
      */
@@ -51,7 +51,7 @@ class MuteMembers extends Base
     /**
      * 关闭全体禁言
      *
-     * @CQCommand("unmuteall")
+     * @CQCommand("unmuteall", alias={"关闭全体禁言", "解除全体禁言"})
      *
      * @return string
      */
