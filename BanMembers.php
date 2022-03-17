@@ -2,7 +2,7 @@
 
 namespace Bot\Module\Moderation;
 
-use Bot\Module\Base;
+use Bot\Module\Essential\Base;
 use ZM\Annotation\CQ\CQCommand;
 
 class BanMembers extends Base
@@ -16,10 +16,9 @@ class BanMembers extends Base
      */
     public function cmdBan(): string
     {
-        $target = $this->askForUser('您想封禁谁？');
-        $bot = must_ctx()->getRobot();
+        $target = $this->interact->askForUser('您想封禁谁？');
         // 提出并禁止加群请求，与封禁效果一致
-        $bot->setGroupKick(must_ctx()->getGroupId(), $target, true);
+        $this->bot->setGroupKick(must_ctx()->getGroupId(), $target, true);
         return "已封禁 $target";
     }
 
@@ -32,8 +31,7 @@ class BanMembers extends Base
      */
     public function cmdUnban(): string
     {
-        $target = $this->askForUser('您想解封谁？');
-        $bot = must_ctx()->getRobot();
+        $target = $this->interact->askForUser('您想解封谁？');
         // TODO: 实现解封
         // 目前 OBV11 的 API 不支持解封，考虑实现为封禁时提出，并储存封禁的用户ID，在再次加群时自动拒绝
         return "已解封 $target";
@@ -47,10 +45,10 @@ class BanMembers extends Base
      */
     public function cmdSoftBan(): string
     {
-        $target = $this->askForUser('您想软封谁？');
-        must_ctx()->setMessage("ban $target");
+        $target = $this->interact->askForUser('您想软封谁？');
+        $this->getContext()->setMessage("ban $target");
         $this->cmdBan();
-        must_ctx()->setMessage("unban $target");
+        $this->getContext()->setMessage("unban $target");
         $this->cmdUnban();
         return "已软封 $target";
     }
