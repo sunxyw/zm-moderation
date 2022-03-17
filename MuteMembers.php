@@ -17,8 +17,8 @@ class MuteMembers extends Base
     public function cmdMute(): string
     {
         $target = $this->interact->askForUser('您想禁言谁？');
-        $this->bot->setGroupBan(must_ctx()->getGroupId(), $target);
-        return "已禁言 $target";
+        $this->bot->setGroupBan(must_ctx()->getGroupId(), $target->id);
+        return '已禁言' . $target->toMention();
     }
 
     /**
@@ -31,8 +31,8 @@ class MuteMembers extends Base
     public function cmdUnmute(): string
     {
         $target = $this->interact->askForUser('您想解除禁言谁？');
-        $this->bot->setGroupBan(must_ctx()->getGroupId(), $target, 0);
-        return "已解除禁言 $target";
+        $this->bot->setGroupBan(must_ctx()->getGroupId(), $target->id, 0);
+        return '已解除禁言' . $target->toMention();
     }
 
     /**
