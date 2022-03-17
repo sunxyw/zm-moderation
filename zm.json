@@ -1,0 +1,7 @@
+{
+  "name": "Moderation",
+  "description": "Moderation commands",
+  "version": "1.0.0",
+  "author": "sunxyw",
+  "allow-hotload": true
+}
