@@ -3,5 +3,8 @@
   "description": "Moderation commands",
   "version": "1.0.0",
   "author": "sunxyw",
-  "allow-hotload": true
+  "allow-hotload": true,
+  "depends": {
+    "essential": "^1.0"
+  }
 }

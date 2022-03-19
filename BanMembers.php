@@ -16,10 +16,10 @@ class BanMembers extends Base
      */
     public function cmdBan(): string
     {
-        $target = $this->interact->askForUser('您想封禁谁？');
+        $target = $this->interact->askForUser($this->trans('ban_who'));
         // 提出并禁止加群请求，与封禁效果一致
         $this->bot->setGroupKick(must_ctx()->getGroupId(), $target->id, true);
-        return '已封禁' . $target->toMention();
+        return $this->trans('banned', $target->toMention());
     }
 
     /**
@@ -31,10 +31,10 @@ class BanMembers extends Base
      */
     public function cmdUnban(): string
     {
-        $target = $this->interact->askForUser('您想解封谁？');
+        $target = $this->interact->askForUser($this->trans('unban_who'));
         // TODO: 实现解封
         // 目前 OBV11 的 API 不支持解封，考虑实现为封禁时提出，并储存封禁的用户ID，在再次加群时自动拒绝
-        return '已解封' . $target->toMention();
+        return $this->trans('unbanned', $target->toMention());
     }
 
     /**

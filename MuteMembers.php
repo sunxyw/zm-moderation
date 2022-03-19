@@ -16,9 +16,9 @@ class MuteMembers extends Base
      */
     public function cmdMute(): string
     {
-        $target = $this->interact->askForUser('您想禁言谁？');
-        $this->bot->setGroupBan(must_ctx()->getGroupId(), $target->id);
-        return '已禁言' . $target->toMention();
+        $target = $this->interact->askForUser($this->trans('mute_who'));
+        $this->bot->setGroupBan($this->getContext()->getGroupId(), $target->id);
+        return $this->trans('muted', $target->toMention());
     }
 
     /**
@@ -30,9 +30,9 @@ class MuteMembers extends Base
      */
     public function cmdUnmute(): string
     {
-        $target = $this->interact->askForUser('您想解除禁言谁？');
-        $this->bot->setGroupBan(must_ctx()->getGroupId(), $target->id, 0);
-        return '已解除禁言' . $target->toMention();
+        $target = $this->interact->askForUser($this->trans('unmute_who'));
+        $this->bot->setGroupBan($this->getContext()->getGroupId(), $target->id, 0);
+        return $this->trans('unmuted', $target->toMention());
     }
 
     /**
